@@ -323,72 +323,34 @@ $udimg = get_field('udimg');
 
 <!-- Happy Client
 ================================================== -->
-<section id="happyClient">
+<?php $hcbg_image = get_field('hcbg_image'); ?>
+<section id="happyClient" style="background: url('<?php echo $hcbg_image['url']; ?>') no-repeat center center / cover;">
 	<div class="container">
 		<h2 class="sectionHeading">
-			<span class="subHeading">Happy Clients</span>
-			What people say
+			<span class="subHeading"><?php the_field('hcsubheading'); ?></span>
+			<?php the_field('hcsubheading2'); ?>
 		</h2>
 		<div class="sectionContent">
 			<div class="row">
+			<?php $happy_client = get_field('happy_client');
+			if( $happy_client ) { 
+				foreach( $happy_client as $row ) {
+			?>
 				<div class="col-md-6">
 					<div layout="row" class="item">
 						<div class="avatar fsr">
-							<img class="img-circle" src="<?php bloginfo('stylesheet_directory'); ?>/assets/images/happy-client/img-1.jpg" alt="">
+							<img class="img-circle" src="<?php echo $row['image']['url']; ?>" alt="">
 						</div>
 						<div class="info">
-							<h4 class="name">Matthew Dix</h4>
-							<span class="regency">Graphic Design</span>
+							<h4 class="name"><?php echo $row['name']; ?></h4>
+							<span class="regency"><?php echo $row['regency']; ?></span>
 							<p class="desc">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo illo cupiditate temporibus sapiente, sint, voluptatibus tempora esse. Consectetur voluptate nihil quo nulla voluptatem dolorem harum nostrum
+							<?php echo $row['description']; ?>
 							</p>
 						</div>
 					</div>
 				</div>
-				<div class="col-md-6">
-					<div layout="row" class="item">
-						<div class="avatar fsr">
-							<img class="img-circle" src="<?php bloginfo('stylesheet_directory'); ?>/assets/images/happy-client/img-2.jpg" alt="">
-						</div>
-						<div class="info">
-							<h4 class="name">Nick Karvounis</h4>
-							<span class="regency">Graphic Design</span>
-							<p class="desc">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo illo cupiditate temporibus sapiente, sint, voluptatibus tempora esse. Consectetur voluptate nihil quo nulla voluptatem dolorem harum nostrum
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-6">
-					<div layout="row" class="item">
-						<div class="avatar fsr">
-							<img class="img-circle" src="<?php bloginfo('stylesheet_directory'); ?>/assets/images/happy-client/img-3.jpg" alt="">
-						</div>
-						<div class="info">
-							<h4 class="name">Jaelynn Castillo</h4>
-							<span class="regency">Graphic Design</span>
-							<p class="desc">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo illo cupiditate temporibus sapiente, sint, voluptatibus tempora esse. Consectetur voluptate nihil quo nulla voluptatem dolorem harum nostrum
-							</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div layout="row" class="item">
-						<div class="avatar fsr">
-							<img class="img-circle" src="<?php bloginfo('stylesheet_directory'); ?>/assets/images/happy-client/img-4.jpg" alt="">
-						</div>
-						<div class="info">
-							<h4 class="name">Mike Petrucci</h4>
-							<span class="regency">Graphic Design</span>
-							<p class="desc">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo illo cupiditate temporibus sapiente, sint, voluptatibus tempora esse. Consectetur voluptate nihil quo nulla voluptatem dolorem harum nostrum
-							</p>
-						</div>
-					</div>
-				</div>
+			<?php }} ?>
 			</div>
 		</div>
 	</div>

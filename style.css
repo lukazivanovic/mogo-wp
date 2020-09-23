@@ -1099,7 +1099,7 @@ section {
 }
 /* =============== SECTION HAPPY CLIENT =============== */
 #happyClient {
-	background: url("/mogowp/wp-content/themes/mogowp/assets/images/happy-client/bg-happy-client.jpg") no-repeat center center / cover;
+	/*background: url("/mogowp/wp-content/themes/mogowp/assets/images/happy-client/bg-happy-client.jpg") no-repeat center center / cover;*/
 }
 #happyClient .item {
 	margin-bottom: 30px;
