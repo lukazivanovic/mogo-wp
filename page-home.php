@@ -262,99 +262,33 @@ $udimg = get_field('udimg');
 <section id="portfolio">
 	<div class="container">
 		<h2 class="sectionHeading">
-			<span class="subHeading">What we do</span>
-			some of our work
+			<span class="subHeading"><?php the_field('portfoliosectionheading'); ?></span>
+			<?php the_field('portfoliosectionheading2'); ?>
 		</h2>
 		<p class="sectionDesc">
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+			<?php the_field('portfoliosectiondesc'); ?>
 		</p>
 	</div>
 	<div class="sectionContent">
 		<ul class="portfolioItems">
+			<?php
+			$portfolio = get_field('portfolio');
+			if( $portfolio ) { 
+				foreach( $portfolio as $row ) {
+			?>
 			<li class="item">
-				<a class="prettyPhoto" rel="prettyPhoto[gallery1]" title="Development Mobile" href="images/our-work/img-1.jpg">
-					<img src="<?php bloginfo('stylesheet_directory'); ?>/assets/images/our-work/img-1.jpg" />
+				<a class="prettyPhoto" rel="prettyPhoto[gallery1]" title="Development Mobile" href="<?php echo $row['img']['url']; ?>">
+					<img src="<?php echo $row['img']['url']; ?>" />
 					<div class="overlay">
 						<div class="content">
-							<i class="mdi mdi-crown icon"></i>
-							<h4 class="title">creatively designed</h4>
-							<span class="desc">Lorem ipsum dolor sit</span>
+							<i class="mdi <?php echo $row['mdi']; ?> icon"></i>
+							<h4 class="title"><?php echo $row['title']; ?></h4>
+							<span class="desc"><?php echo $row['description']; ?></span>
 						</div>
 					</div>
 				</a>
 			</li>
-			<li class="item">
-				<a class="prettyPhoto" rel="prettyPhoto[gallery1]" title="Development Mobile" href="images/our-work/img-2.jpg">
-					<img src="<?php bloginfo('stylesheet_directory'); ?>/assets/images/our-work/img-2.jpg" />
-					<div class="overlay">
-						<div class="content">
-							<i class="mdi mdi-cube-outline icon"></i>
-							<h4 class="title">creatively designed</h4>
-							<span class="desc">Lorem ipsum dolor sit</span>
-						</div>
-					</div>
-				</a>
-			</li>
-			<li class="item">
-				<a class="prettyPhoto" rel="prettyPhoto[gallery1]" title="Development Mobile" href="images/our-work/img-3.jpg">
-					<img src="<?php bloginfo('stylesheet_directory'); ?>/assets/images/our-work/img-3.jpg" />
-					<div class="overlay">
-						<div class="content">
-							<i class="mdi mdi-desktop-mac icon"></i>
-							<h4 class="title">creatively designed</h4>
-							<span class="desc">Lorem ipsum dolor sit</span>
-						</div>
-					</div>
-				</a>
-			</li>
-			<li class="item">
-				<a class="prettyPhoto" rel="prettyPhoto[gallery1]" title="Development Mobile" href="images/our-work/img-4.jpg">
-					<img src="<?php bloginfo('stylesheet_directory'); ?>/assets/images/our-work/img-4.jpg" />
-					<div class="overlay">
-						<div class="content">
-							<i class="mdi mdi-flower icon"></i>
-							<h4 class="title">creatively designed</h4>
-							<span class="desc">Lorem ipsum dolor sit</span>
-						</div>
-					</div>
-				</a>
-			</li>
-			<li class="item">
-				<a class="prettyPhoto" rel="prettyPhoto[gallery1]" title="Development Mobile" href="images/our-work/img-5.jpg">
-					<img src="<?php bloginfo('stylesheet_directory'); ?>/assets/images/our-work/img-5.jpg" />
-					<div class="overlay">
-						<div class="content">
-							<i class="mdi mdi-gamepad-variant icon"></i>
-							<h4 class="title">creatively designed</h4>
-							<span class="desc">Lorem ipsum dolor sit</span>
-						</div>
-					</div>
-				</a>
-			</li>
-			<li class="item">
-				<a class="prettyPhoto" rel="prettyPhoto[gallery1]" title="Development Mobile" href="images/our-work/img-6.jpg">
-					<img src="<?php bloginfo('stylesheet_directory'); ?>/assets/images/our-work/img-6.jpg" />
-					<div class="overlay">
-						<div class="content">
-							<i class="mdi mdi-gnome icon"></i>
-							<h4 class="title">creatively designed</h4>
-							<span class="desc">Lorem ipsum dolor sit</span>
-						</div>
-					</div>
-				</a>
-			</li>
-			<li class="item">
-				<a class="prettyPhoto" rel="prettyPhoto[gallery1]" title="Development Mobile" href="images/our-work/img-7.jpg">
-					<img src="<?php bloginfo('stylesheet_directory'); ?>/assets/images/our-work/img-7.jpg" />
-					<div class="overlay">
-						<div class="content">
-							<i class="mdi mdi-guitar-electric icon"></i>
-							<h4 class="title">creatively designed</h4>
-							<span class="desc">Lorem ipsum dolor sit</span>
-						</div>
-					</div>
-				</a>
-			</li>
+			<?php }} ?>
 		</ul>
 	</div>
 </section><!--/#portfolio-->
@@ -365,39 +299,23 @@ $udimg = get_field('udimg');
 	<div class="container">
 		<div class="testimonialSlider">
 			<ul>
+			<?php
+			$testimonial2 = get_field('testimonial2');
+			if( $testimonial2 ) { 
+				foreach( $testimonial2 as $row ) {
+			?>
 				<li>
 					<div layout="row" class="verticalCenter">
 						<div class="avatar fsr">
-							<img class="img-circle img-thumbnail" src="<?php bloginfo('stylesheet_directory'); ?>/assets/images/testimonial/img-1.jpg" alt="">
+							<img class="img-circle img-thumbnail" src="<?php echo $row['image']['url']; ?>" alt="">
 						</div>
 						<div>
-							<p class="quote">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation."</p>
-							<span class="name">Joshua Earle</span>
+							<p class="quote">"<?php echo $row['quote']; ?>"</p>
+							<span class="name"><?php echo $row['name']; ?></span>
 						</div>
 					</div>
 				</li>
-				<li>
-					<div layout="row" class="verticalCenter">
-						<div class="avatar fsr">
-							<img class="img-circle img-thumbnail" src="<?php bloginfo('stylesheet_directory'); ?>/assets/images/testimonial/img-2.jpg" alt="">
-						</div>
-						<div>
-							<p class="quote">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation."</p>
-							<span class="name">Jon Doe</span>
-						</div>
-					</div>
-				</li>
-				<li>
-					<div layout="row" class="verticalCenter">
-						<div class="avatar fsr">
-							<img class="img-circle img-thumbnail" src="<?php bloginfo('stylesheet_directory'); ?>/assets/images/testimonial/img-3.jpg" alt="">
-						</div>
-						<div>
-							<p class="quote">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation."</p>
-							<span class="name">Jon Doe</span>
-						</div>
-					</div>
-				</li>
+				<?php }} ?>
 			</ul>
 		</div>
 	</div>
