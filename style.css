@@ -1077,6 +1077,11 @@ section {
 	margin: 0 -1px;
 	line-height: 100%;
 }
+#ourTeam .item img{
+	width: 380px;
+	height: 470px;
+	object-fit: cover;
+}
 #ourTeam .content .icon:hover {
 	color: #fff;
 	background: #f38181;

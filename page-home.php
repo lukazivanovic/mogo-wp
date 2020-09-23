@@ -205,68 +205,40 @@ $udimg = get_field('udimg');
 <section id="ourTeam">
 	<div class="container">
 		<h2 class="sectionHeading">
-			<span class="subHeading">Who we are</span>
-			Meet our team
+			<span class="subHeading"><?php the_field('otsubheading'); ?></span>
+			<?php the_field('otsubheading2'); ?>
 		</h2>
 		<p class="sectionDesc">
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+			<?php the_field('otsectiondesc'); ?> 
 		</p>
 		<div class="sectionContent">
 			<div class="row hoverEffect">
+			<?php
+				$ourteam = get_field('ourteam');
+				if( $ourteam ) { 
+					foreach( $ourteam as $row ) {
+			?>
 				<div class="col-md-4 col-sm-4">
 					<div class="item">
 						<div class="overlay" href="#">
 							<div class="content">
-								<a href="#" class="icon"><i class="mdi mdi-facebook"></i></a>
-								<a href="#" class="icon"><i class="mdi mdi-twitter"></i></a>
-								<a href="#" class="icon"><i class="mdi mdi-pinterest"></i></a>
-								<a href="#" class="icon"><i class="mdi mdi-instagram"></i></a>
+								<?php if($row['icons']) { 
+									foreach ($row['icons'] as $icon){ ?>
+								<a href="<?php echo $icon['link']; ?>" class="icon"><i class="mdi <?php echo $icon	['mdi']; ?>"></i></a>
+								<?php }} ?>
 							</div>
-							<img src="<?php bloginfo('stylesheet_directory'); ?>/assets/images/our-team/img-1.jpg" alt="">
+							<img src="<?php echo $row['img']['url']; ?>" alt="">
 						</div>
 					</div>
 					<div class="info">
-						<h4 class="name">Matthew Dix</h4>
-						<span class="regency">Graphic Design</span>
+						<h4 class="name"><?php echo $row['name']; ?></h4>
+						<span class="regency"><?php echo $row['regency']; ?></span>
 					</div>
 				</div>
-				<div class="col-md-4 col-sm-4">
-					<div class="item">
-						<div class="overlay" href="#">
-							<div class="content">
-								<a href="#" class="icon"><i class="mdi mdi-facebook"></i></a>
-								<a href="#" class="icon"><i class="mdi mdi-twitter"></i></a>
-								<a href="#" class="icon"><i class="mdi mdi-pinterest"></i></a>
-								<a href="#" class="icon"><i class="mdi mdi-instagram"></i></a>
-							</div>
-							<img src="<?php bloginfo('stylesheet_directory'); ?>/assets/images/our-team/img-2.jpg" alt="">
-						</div>
-					</div>
-					<div class="info">
-						<h4 class="name">Christopher Campbell</h4>
-						<span class="regency">Branding/UX design</span>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-4">
-					<div class="item">
-						<div class="overlay" href="#">
-							<div class="content">
-								<a href="#" class="icon"><i class="mdi mdi-facebook"></i></a>
-								<a href="#" class="icon"><i class="mdi mdi-twitter"></i></a>
-								<a href="#" class="icon"><i class="mdi mdi-pinterest"></i></a>
-								<a href="#" class="icon"><i class="mdi mdi-instagram"></i></a>
-							</div>
-							<img src="<?php bloginfo('stylesheet_directory'); ?>/assets/images/our-team/img-3.jpg" alt="">
-						</div>
-					</div>
-					<div class="info">
-						<h4 class="name">Michael Fertig </h4>
-						<span class="regency">Developer</span>
-					</div>
-				</div>
+				<?php }} ?>
 			</div>
 		</div>
-	</div>
+	</div>		
 </section><!--/#ourTeam-->
 
 <!-- Brand
@@ -274,12 +246,13 @@ $udimg = get_field('udimg');
 <section id="brand">
 	<div class="container">
 		<div class="verticalCenter fw" layout="row">
-			<div class="col-md-2 col-sm-4 col-xs-6"><a href="#"><img src="<?php bloginfo('stylesheet_directory'); ?>/assets/images/brand/img-1.png" alt=""></a></div>
-			<div class="col-md-2 col-sm-4 col-xs-6"><a href="#"><img src="<?php bloginfo('stylesheet_directory'); ?>/assets/images/brand/img-2.png" alt=""></a></div>
-			<div class="col-md-2 col-sm-4 col-xs-6"><a href="#"><img src="<?php bloginfo('stylesheet_directory'); ?>/assets/images/brand/img-3.png" alt=""></a></div>
-			<div class="col-md-2 col-sm-4 col-xs-6"><a href="#"><img src="<?php bloginfo('stylesheet_directory'); ?>/assets/images/brand/img-4.png" alt=""></a></div>
-			<div class="col-md-2 col-sm-4 col-xs-6"><a href="#"><img src="<?php bloginfo('stylesheet_directory'); ?>/assets/images/brand/img-5.png" alt=""></a></div>
-			<div class="col-md-2 col-sm-4 col-xs-6"><a href="#"><img src="<?php bloginfo('stylesheet_directory'); ?>/assets/images/brand/img-6.png" alt=""></a></div>
+			<?php
+			$brand = get_field('brand');
+			if( $brand ) { 
+				foreach( $brand as $row ) {
+			?>
+			<div class="col-md-2 col-sm-4 col-xs-6"><a href="<?php echo $row['link']; ?>"><img src="<?php echo $row['image']['url']; ?>" alt=""></a></div>
+			<?php }} ?>
 		</div>
 	</div>
 </section><!--/#brand-->
