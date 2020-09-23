@@ -124,69 +124,46 @@ $udimg = get_field('udimg');
 <section id="whatWeDo">
 	<div class="container">
 		<h2 class="sectionHeading">
-			<span class="subHeading">Service</span>
-			what we do
+			<span class="subHeading"><?php the_field('wwdsubheading'); ?></span>
+			<?php the_field('wwdsubheading2'); ?>
 		</h2>
 		<p class="sectionDesc">
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+			<?php the_field('wwdsectiondesc'); ?>
 		</p>
 		<div class="sectionContent">
 			<div class="row">
 				<div class="col-md-6">
 					<div class="text-center">
-						<img src="<?php bloginfo('stylesheet_directory'); ?>/assets/images/what-we-do/img-1.jpg" alt="">
+						<?php $wwdimg = get_field('wwdimg'); ?> 
+						<img src="<?php echo $wwdimg['url']; ?>" alt="">
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+					<?php
+						$accordion = get_field('accordion');
+						if( $accordion ) { 
+							$acccounter = 1;
+							foreach( $accordion as $row ) { 
+								$acccount = $acccounter++;?>
 						<div class="panel panel-default">
-							<div class="panel-heading" role="tab" id="headingOne">
+							<div class="panel-heading" role="tab" id="heading<?php echo $acccount; ?>">
 								<h4 class="panel-title">
-									<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+									<a class="<?php if($acccount==1) echo 'collapsed'; ?>" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $acccount; ?>" aria-expanded="<?php if($acccount==1) echo 'true'; else echo 'false'; ?>" aria-controls="collapse<?php echo $acccount; ?>">
 										<i class="mdi mdi-chevron-up icon arrow"></i>
-										<i class="mdi mdi-camera icon"></i> 
-										Photography
+										<i class="mdi <?php echo $row['accordion_icon']; ?> icon"></i> 
+										<?php echo $row['accordion_title']; ?>
 									</a>
 								</h4>
 							</div>
-							<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+							<div id="collapse<?php echo $acccount; ?>" class="panel-collapse collapse <?php if($acccount==1) echo 'in'; ?>" role="tabpanel" aria-labelledby="heading<?php echo $acccount; ?>">
 								<div class="panel-body">
-									Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+								<?php echo $row['accordion_body']; ?>
 								</div>
 							</div>
+						<?php } ?>
 						</div>
-						<div class="panel panel-default">
-							<div class="panel-heading" role="tab" id="headingTwo">
-								<h4 class="panel-title">
-									<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-										<i class="mdi mdi-chevron-up icon arrow"></i>
-										<i class="mdi mdi-owl icon"></i> 
-										creativity
-									</a>
-								</h4>
-							</div>
-							<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-								<div class="panel-body">
-									Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-								</div>
-							</div>
-						</div>
-						<div class="panel panel-default">
-							<div class="panel-heading" role="tab" id="headingThree">
-								<h4 class="panel-title">
-									<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-										<i class="mdi mdi-chevron-up icon arrow"></i>
-										<i class="mdi mdi-laptop-mac icon"></i> 
-										web design
-									</a>
-								</h4>
-							</div>
-							<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-								<div class="panel-body">
-									Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-								</div>
-							</div>
-						</div>
+						<?php } ?>
 					</div>
 				</div>
 			</div>
@@ -198,42 +175,27 @@ $udimg = get_field('udimg');
 ================================================== -->
 <section class="testimonial">
 	<div class="container">
+		<?php
+			$testimonial = get_field('testimonial');
+			if( $testimonial ) { 
+		?>
 		<div class="testimonialSlider">
 			<ul>
+				<?php foreach( $testimonial as $row ) {?>
 				<li>
 					<div layout="row">
 						<div class="symbol fsr">
-							<i class="mdi mdi-comment-multiple-outline icon"></i>
+							<i class="mdi <?php echo $row['mdi']; ?> icon"></i>
 						</div>
 						<div>
-							<p class="quote">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation."</p>
-							<span class="name">Jon Doe</span>
+							<p class="quote">"<?php echo $row['quote']; ?>"</p>
+							<span class="name"><?php echo $row['name']; ?></span>
 						</div>
 					</div>
 				</li>
-				<li>
-					<div layout="row">
-						<div class="symbol fsr">
-							<i class="mdi mdi-wechat icon"></i>	
-						</div>
-						<div>
-							<p class="quote">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation."</p>
-							<span class="name">Jon Doe</span>
-						</div>
-					</div>
-				</li>
-				<li>
-					<div layout="row">
-						<div class="symbol fsr">
-							<i class="mdi mdi-message-text-outline icon"></i>
-						</div>
-						<div>
-							<p class="quote">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation."</p>
-							<span class="name">Jon Doe</span>
-						</div>
-					</div>
-				</li>
+				<?php } ?>
 			</ul>
+			<?php } ?>
 		</div>
 	</div>
 </section><!--/#testimonial-->
