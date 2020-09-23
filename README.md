@@ -4,6 +4,6 @@ Built with Underscores (_s) and Bootstrap
 
 database file: database.sql, database name: mogowp, username: 'root', password: ''
 
-![Alt text](screenshot.png?raw=true "Home page")
+![Alt text](screenshot.jpg?raw=true "Home page")
 
 ![Alt text](screenshot2.png?raw=true "Home page")
