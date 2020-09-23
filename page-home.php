@@ -71,82 +71,49 @@ $storysectiondesc = get_field('storysectiondesc');
 <section id="services">
 	<div class="container">
 		<h2 class="sectionHeading">
-			<span class="subHeading">We work with</span>
-			Amazing Services
+			<span class="subHeading"><?php the_field('servicessubheading'); ?></span>
+			<?php the_field('servicessubheading2'); ?>
 		</h2>
 		<div class="sectionContent">			
 			<div class="fw" layout="row">
-				<div class="col-md-4 col-sm-6 item ">
+			<?php
+				$service = get_field('service');
+				if( $service ) { 
+			?>
+				<?php foreach( $service as $row ) {?>
+					<div class="col-md-4 col-sm-6 item ">
 					<div layout="row">
-						<i class="mdi mdi-apple-keyboard-command icon fsr"></i>
+						<i class="mdi <?php echo $row['material_design_icon']; ?> icon fsr"></i>
 						<div>
-							<h4 class="serviceTitle">Photography</h4>
-							<p>Photography is the science, art and practice of creating durable images by recording light or other electromagnetic radiation</p>
+							<h4 class="serviceTitle"><?php echo $row['servicetitle']; ?></h4>
+							<p><?php echo $row['servicetext']; ?></p>
 						</div>
 					</div>
 				</div>
-				<div class="col-md-4 col-sm-6 item ">
-					<div layout="row">
-						<i class="mdi mdi-blender icon fsr"></i>
-						<div>
-							<h4 class="serviceTitle">Web Design</h4>
-							<p>Web design encompasses many different skills and disciplines in the production and maintenance of websites.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-6 item ">
-					<div layout="row">
-						<i class="mdi mdi-bookmark-plus-outline icon fsr"></i>
-						<div>
-							<h4 class="serviceTitle">Creativity</h4>
-							<p>Creativity is a phenomenon whereby something new and somehow valuable is formed. The created item may be intangible or a physical object.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-6 item ">
-					<div layout="row">
-						<i class="mdi mdi-buffer icon fsr"></i>
-						<div>
-							<h4 class="serviceTitle">seo</h4>
-							<p>Search engine optimization (SEO) is the process of affecting the visibility of a website or a web page in a web search engine's unpaid results.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-6 item ">
-					<div layout="row">
-						<i class="mdi mdi-desktop-mac icon fsr"></i>
-						<div>
-							<h4 class="serviceTitle">Css/Html</h4>
-							<p>HyperText Markup Language, commonly abbreviated as HTML, is the standard markup language used to create web pages. </p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-6 item ">
-					<div layout="row">
-						<i class="mdi mdi-diamond icon fsr"></i>
-						<div>
-							<h4 class="serviceTitle">digital</h4>
-							<p>With digital signals, system noise, provided it is not too great, will not change the quantification whereas with signals handled using analog processing.</p>
-						</div>
-					</div>
-				</div>
+				<?php } ?>
 			</div>
+			<?php } ?>
 		</div>
 	</div>
 </section><!--/#services-->
 
 <!-- Unique Design
 ================================================== -->
-<section id="uniqueDesign">
+<?php
+$tabletimg = get_field('tabletimg');
+$mobileimg = get_field('mobileimg');
+$udimg = get_field('udimg');
+?>
+<section id="uniqueDesign" style="background: #e0e0e0 url('<?php echo $udimg['url']; ?>') no-repeat center center / cover;">
 	<div class="container">
 		<h2 class="sectionHeading">
-			<span class="subHeading">For all devices</span>
-			Unique design
+			<span class="subHeading"><?php the_field('udsubheading'); ?></span>
+			<?php the_field('udsubheading2'); ?>
 		</h2>
 		<div class="sectionContent">
 			<div class="devices">
-				<img class="tablet" src="<?php bloginfo('stylesheet_directory'); ?>/assets/images/unique-design/img-1.png" alt="">
-				<img class="mobile" src="<?php bloginfo('stylesheet_directory'); ?>/assets/images/unique-design/img-2.png" alt="">
+				<img class="tablet" src="<?php echo $tabletimg['url']; ?>" alt="">
+				<img class="mobile" src="<?php echo $mobileimg['url']; ?>" alt="">
 			</div>
 		</div>
 	</div>

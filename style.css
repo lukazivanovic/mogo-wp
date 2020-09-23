@@ -865,7 +865,7 @@ section {
 #uniqueDesign {
 	padding-bottom: 0;
 	margin-bottom: 30px;
-	background: #e0e0e0 url("/mogowp/wp-content/themes/mogowp/assets/images/unique-design/bg-unique-design.jpg") no-repeat center center / cover;
+	/*background: #e0e0e0 url("/mogowp/wp-content/themes/mogowp/assets/images/unique-design/bg-unique-design.jpg") no-repeat center center / cover;*/
 }
 #uniqueDesign .devices {
 	position: relative;
