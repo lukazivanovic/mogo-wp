@@ -1,4 +1,6 @@
-Mogo WP - Wordpress Theme that uses Mogo template. Contains Advanced Custom Fields.
+Mogo WP - Wordpress Theme that uses Mogo template. https://freebiesbug.com/psd-freebies/mogo-free-one-page-psd-template/
+
+Contains Advanced Custom Fields.
 
 Built with Underscores (_s) and Bootstrap
 
